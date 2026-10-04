@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="翻喫茶ほんきっさ｜台中西區溫暖安靜的咖啡小店，提供手沖咖啡、自製甜點、穩定 Wi-Fi 與充足插座。" />
+  <title>翻喫茶ほんきっさ｜一杯咖啡，一段安靜的時光</title>
+  <style>
+    :root {
+      --brown-900: #3a2418;
+      --brown-800: #4b3021;
+      --brown-700: #624332;
+      --brown-500: #8a674f;
+      --cream: #f7f2e9;
+      --cream-2: #efe6d8;
+      --wood: #c9a47d;
+      --wood-light: #dfc6a5;
+      --line: #d9cbb9;
+      --text: #34271f;
+      --muted: #796a5d;
+      --white: #fffdf9;
+      --shadow: 0 18px 45px rgba(58, 36, 24, .10);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--cream);
+      font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
+      line-height: 1.8;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247,242,233,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(75,48,33,.10);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .12em;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--brown-700);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-family: "Times New Roman", serif;
+      font-size: 10px;
+      letter-spacing: .16em;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 14px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--brown-800);
+      transition: color .2s ease;
+    }
+    .nav-links a:hover { color: var(--wood); }
+
+    /* Shared */
+    section { padding: 96px 0; }
+    .section-kicker {
+      color: var(--brown-500);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font: 600 12px/1.2 "Times New Roman", serif;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.3;
+      letter-spacing: .08em;
+      color: var(--brown-900);
+    }
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 44px;
+      height: 2px;
+      background: var(--wood);
+      margin-top: 18px;
+    }
+    .section-intro {
+      max-width: 650px;
+      color: var(--muted);
+      margin: 20px 0 0;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 680px;
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(49,30,20,.90) 0%, rgba(49,30,20,.66) 42%, rgba(49,30,20,.18) 75%),
+        radial-gradient(circle at 76% 45%, #c69d72 0 9%, transparent 10%),
+        linear-gradient(135deg, #5b3c28, #b9946c 52%, #e3c8a4);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .32;
+      background:
+        linear-gradient(90deg, transparent 0 54%, rgba(255,255,255,.18) 54.2% 54.5%, transparent 54.7%),
+        repeating-linear-gradient(90deg, rgba(70,39,22,.12) 0 3px, transparent 3px 48px);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "☕";
+      position: absolute;
+      right: 11%;
+      bottom: 14%;
+      font-size: clamp(100px, 18vw, 220px);
+      color: rgba(255,250,239,.18);
+      transform: rotate(-9deg);
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-copy { max-width: 650px; color: #fffaf1; }
+    .eyebrow {
+      letter-spacing: .18em;
+      font-size: 13px;
+      color: #ead8bf;
+    }
+    .hero h1 {
+      margin: 16px 0 20px;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: 1.15;
+      letter-spacing: .08em;
+      font-weight: 700;
+    }
+    .hero-lead {
+      max-width: 510px;
+      color: #f4e9d9;
+      font-size: 17px;
+      margin-bottom: 34px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--cream); color: var(--brown-900); }
+    .btn-ghost { border-color: rgba(255,255,255,.5); color: #fff; background: rgba(255,255,255,.06); }
+    .hero-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 58px;
+      max-width: 760px;
+      border-top: 1px solid rgba(255,255,255,.28);
+      padding-top: 20px;
+    }
+    .hero-feature {
+      padding: 0 22px;
+      border-right: 1px solid rgba(255,255,255,.28);
+    }
+    .hero-feature:first-child { padding-left: 0; }
+    .hero-feature:last-child { border-right: 0; }
+    .hero-feature strong { display: block; font-size: 14px; margin-bottom: 4px; }
+    .hero-feature span { font-size: 12px; color: #dfccb4; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .about-visual {
+      min-height: 460px;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.0)),
+        repeating-linear-gradient(90deg, #a87850 0 9px, #b9875d 9px 14px, #956543 14px 20px);
+      box-shadow: var(--shadow);
+    }
+    .about-visual::before {
+      content: "";
+      position: absolute;
+      width: 74%;
+      height: 70%;
+      right: 8%;
+      top: 12%;
+      background: rgba(247,242,233,.88);
+      border: 10px solid rgba(247,242,233,.45);
+      box-shadow: 0 25px 45px rgba(58,36,24,.18);
+    }
+    .about-visual::after {
+      content: "ほんきっさ\A一杯の余白";
+      white-space: pre;
+      position: absolute;
+      right: 16%;
+      top: 26%;
+      color: var(--brown-800);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.5;
+      letter-spacing: .12em;
+      writing-mode: vertical-rl;
+    }
+    .about-copy p { color: var(--muted); }
+    .quote {
+      margin-top: 28px;
+      padding: 20px 22px;
+      border-left: 3px solid var(--wood);
+      background: rgba(255,255,255,.48);
+      color: var(--brown-800);
+    }
+
+    /* Menu */
+    .menu-section { background: var(--white); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 42px;
+    }
+    .menu-card {
+      padding: 26px;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .menu-card h3 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: .1em;
+    }
+    .menu-card h3 span {
+      color: var(--brown-500);
+      font: 13px "Times New Roman", serif;
+      letter-spacing: .08em;
+      margin-left: 7px;
+    }
+    .menu-art {
+      height: 150px;
+      margin: 20px 0;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 70px;
+      color: rgba(58,36,24,.72);
+      background:
+        radial-gradient(circle at 50% 48%, #4a2e1e 0 24%, transparent 25%),
+        radial-gradient(circle at 50% 48%, #d6b28b 0 32%, transparent 33%),
+        linear-gradient(135deg, #c89f76, #e5ceb0);
+    }
+    .menu-card:nth-child(2) .menu-art {
+      background:
+        radial-gradient(circle at 50% 48%, #6b4d39 0 22%, transparent 23%),
+        radial-gradient(circle at 50% 48%, #f1dfc3 0 31%, transparent 32%),
+        linear-gradient(135deg, #d8c3a7, #b38a65);
+    }
+    .menu-card:nth-child(3) .menu-art {
+      background:
+        radial-gradient(ellipse at 50% 58%, #c98f52 0 25%, transparent 26%),
+        radial-gradient(ellipse at 50% 55%, #f0dfbf 0 35%, transparent 36%),
+        linear-gradient(135deg, #c4a078, #eee0ca);
+    }
+    .menu-list { list-style: none; margin: 0; padding: 0; }
+    .menu-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    .menu-list li::after {
+      content: "";
+      order: 2;
+      flex: 1;
+      border-bottom: 1px dotted #bca994;
+      transform: translateY(-5px);
+    }
+    .menu-list .price { order: 3; white-space: nowrap; color: var(--brown-700); }
+
+    /* Space */
+    .space-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 52px;
+      align-items: center;
+    }
+    .amenities {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 35px;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .amenity {
+      padding: 22px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.32);
+    }
+    .amenity-icon { font-size: 28px; margin-bottom: 6px; }
+    .amenity strong { display: block; color: var(--brown-800); }
+    .amenity span { color: var(--muted); font-size: 13px; }
+    .space-visual {
+      min-height: 430px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(58,36,24,.18)),
+        repeating-linear-gradient(0deg, #9c704d 0 8px, #b7875d 8px 13px),
+        linear-gradient(135deg, #c8a077, #775038);
+      position: relative;
+      overflow: hidden;
+    }
+    .space-visual::before {
+      content: "";
+      position: absolute;
+      width: 46%;
+      height: 46%;
+      left: 12%;
+      top: 18%;
+      background: rgba(245,231,208,.8);
+      box-shadow: 180px 35px 0 -5px rgba(245,231,208,.58), 95px 170px 0 -20px rgba(73,47,33,.65);
+    }
+    .space-visual::after {
+      content: "安靜\A木質\A留白";
+      white-space: pre;
+      position: absolute;
+      right: 13%;
+      bottom: 13%;
+      color: #fff8ec;
+      font-size: 28px;
+      line-height: 1.8;
+      letter-spacing: .12em;
+    }
+
+    /* Info */
+    .info-section { background: var(--white); }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 42px;
+    }
+    .info-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--cream);
+    }
+    .info-card h3 { margin-top: 0; font-size: 20px; }
+    .info-card p { color: var(--muted); font-size: 14px; }
+    .info-card a { color: var(--brown-700); font-weight: 700; }
+    .map-link {
+      display: inline-flex;
+      margin-top: 8px;
+      padding: 10px 16px;
+      background: var(--brown-800);
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    /* Contact / CTA */
+    .contact {
+      padding-top: 76px;
+      padding-bottom: 76px;
+    }
+    .contact-box {
+      background: var(--brown-900);
+      color: #fff9ef;
+      border-radius: 24px;
+      padding: 54px clamp(26px, 6vw, 70px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-box::after {
+      content: "ほんきっさ";
+      position: absolute;
+      right: -15px;
+      bottom: -42px;
+      font-size: 100px;
+      color: rgba(255,255,255,.04);
+      font-weight: 700;
+    }
+    .contact-box h2 { margin: 0 0 10px; font-size: clamp(28px, 4vw, 42px); }
+    .contact-box p { margin: 0; color: #d8c7b2; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; position: relative; z-index: 1; }
+    .contact-actions .btn-primary { background: #f5eadb; }
+    .contact-actions .btn-ghost { border-color: rgba(255,255,255,.3); }
+
+    /* Footer */
+    footer {
+      background: #2b1b13;
+      color: #cbb9a5;
+      padding: 28px 0;
+      font-size: 12px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 820px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .nav { min-height: 64px; }
+      .nav-links {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: 72px;
+        padding: 14px;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .nav-links a {
+        text-align: center;
+        padding: 8px 3px;
+        font-size: 12px;
+      }
+      section { padding: 70px 0; }
+      .hero { min-height: 720px; }
+      .hero-features { grid-template-columns: repeat(2, 1fr); gap: 18px 0; }
+      .hero-feature:nth-child(2) { border-right: 0; }
+      .hero-feature:nth-child(3) { padding-left: 0; }
+      .about-grid, .space-grid { grid-template-columns: 1fr; gap: 38px; }
+      .about-visual { min-height: 340px; }
+      .menu-grid, .info-grid { grid-template-columns: 1fr; }
+      .space-visual { min-height: 340px; }
+      .contact-box { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .brand { font-size: 14px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .nav-links { grid-template-columns: repeat(2, 1fr); }
+      .hero { min-height: 760px; }
+      .hero h1 { font-size: 42px; }
+      .hero-feature { padding: 0 12px; }
+      .hero-features { margin-top: 40px; }
+      .amenities { grid-template-columns: 1fr; }
+      .menu-card { padding: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="翻喫茶ほんきっさ首頁">
+        <span class="brand-mark" aria-hidden="true">☕</span>
+        <span>翻喫茶ほんきっさ<small>HONKISSA · TAICHUNG</small></span>
+      </a>
+      <nav class="nav-links" aria-label="主要導覽">
+        <a href="#about">關於我們</a>
+        <a href="#menu">菜單</a>
+        <a href="#space">空間設備</a>
+        <a href="#info">營業資訊</a>
+        <a href="#contact">聯絡我們</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero 主視覺 -->
+    <section class="hero" id="home" aria-label="Hero 主視覺">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow">一杯咖啡 · 一段屬於自己的時光</div>
+          <h1>翻喫茶<br>ほんきっさ</h1>
+          <p class="hero-lead">
+            在城市的日常裡，留一個安靜的角落。
+            手沖咖啡、自製甜點，還有適合閱讀、工作與放空的舒服留白。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#menu">看看菜單</a>
+            <a class="btn btn-ghost" href="#contact">前往店裡</a>
+          </div>
+
+          <div class="hero-features" aria-label="店家特色">
+            <div class="hero-feature"><strong>插座充足</strong><span>工作、閱讀都方便</span></div>
+            <div class="hero-feature"><strong>Wi-Fi 穩定</strong><span>安心處理日常工作</span></div>
+            <div class="hero-feature"><strong>平日下午不限時</strong><span>適合慢慢坐下來</span></div>
+            <div class="hero-feature"><strong>手沖＋自製甜點</strong><span>每日享受一點甜</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 關於我們 -->
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-visual" aria-hidden="true"></div>
+        <div class="about-copy">
+          <div class="section-kicker">About Us</div>
+          <h2 class="section-title">關於我們</h2>
+          <p>
+            翻喫茶ほんきっさ，是一間位於台中西區、帶著日系氣息的咖啡小店。
+            我們相信，好咖啡與甜點不只是味道，更是一種讓生活慢下來的節奏。
+          </p>
+          <p>
+            無論是工作、閱讀、和朋友聊聊天，或只是想找個地方放空，
+            都歡迎你把一段時間留給自己。
+          </p>
+          <div class="quote">「不用趕路，先坐下來喝杯咖啡。」</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 菜單 -->
+    <section id="menu" class="menu-section">
+      <div class="container">
+        <div class="section-kicker">Menu</div>
+        <h2 class="section-title">菜單</h2>
+        <p class="section-intro">以下為網站展示用菜單，可依店家實際品項與價格直接修改。</p>
+
+        <div class="menu-grid">
+          <article class="menu-card">
+            <h3>咖啡 <span>Coffee</span></h3>
+            <div class="menu-art" aria-hidden="true">☕</div>
+            <ul class="menu-list">
+              <li>美式咖啡 <span class="price">100</span></li>
+              <li>拿鐵 <span class="price">130</span></li>
+              <li>卡布奇諾 <span class="price">130</span></li>
+              <li>焦糖拿鐵 <span class="price">150</span></li>
+              <li>手沖咖啡 <span class="price">160 起</span></li>
+            </ul>
+          </article>
+
+          <article class="menu-card">
+            <h3>非咖啡 <span>Non-Coffee</span></h3>
+            <div class="menu-art" aria-hidden="true">🥛</div>
+            <ul class="menu-list">
+              <li>抹茶拿鐵 <span class="price">130</span></li>
+              <li>可可歐蕾 <span class="price">130</span></li>
+              <li>鮮奶茶 <span class="price">120</span></li>
+              <li>水果氣泡飲 <span class="price">130</span></li>
+              <li>黑糖牛奶 <span class="price">120</span></li>
+            </ul>
+          </article>
+
+          <article class="menu-card">
+            <h3>甜點 <span>Dessert</span></h3>
+            <div class="menu-art" aria-hidden="true">🍰</div>
+            <ul class="menu-list">
+              <li>巴斯克乳酪蛋糕 <span class="price">120</span></li>
+              <li>檸檬塔 <span class="price">110</span></li>
+              <li>肉桂捲 <span class="price">100</span></li>
+              <li>磅蛋糕 <span class="price">90</span></li>
+              <li>每日限定甜點 <span class="price">依現場為主</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 空間設備 -->
+    <section id="space">
+      <div class="container space-grid">
+        <div>
+          <div class="section-kicker">Space & Equipment</div>
+          <h2 class="section-title">空間設備</h2>
+          <p class="section-intro">
+            木質、溫暖與留白，讓每一個座位都保有自己的安靜感。
+            無論帶著筆電或一本書，都能自在地待上一會兒。
+          </p>
+          <div class="amenities">
+            <div class="amenity"><div class="amenity-icon">⌁</div><strong>插座充足</strong><span>適合工作與長時間使用</span></div>
+            <div class="amenity"><div class="amenity-icon">⌁</div><strong>Wi-Fi 穩定</strong><span>安心處理日常工作</span></div>
+            <div class="amenity"><div class="amenity-icon">◷</div><strong>平日下午不限時</strong><span>適合慢慢閱讀與工作</span></div>
+            <div class="amenity"><div class="amenity-icon">⌂</div><strong>木質安靜空間</strong><span>留一點餘裕給自己</span></div>
+          </div>
+        </div>
+        <div class="space-visual" aria-label="溫暖木質咖啡廳空間示意圖"></div>
+      </div>
+    </section>
+
+    <!-- 5. 營業資訊 -->
+    <section id="info" class="info-section">
+      <div class="container">
+        <div class="section-kicker">Information</div>
+        <h2 class="section-title">營業資訊</h2>
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>營業時間</h3>
+            <p>
+              平日：09:00–20:00<br />
+              （平日下午不限時）<br />
+              假日：09:00–18:00
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>地址</h3>
+            <p>403 臺中市西區廣民里樂群街44號</p>
+            <a class="map-link"
+               href="https://www.google.com/maps/search/?api=1&query=403%E8%87%BA%E4%B8%AD%E5%B8%82%E8%A5%BF%E5%8D%80%E5%BB%A3%E6%B0%91%E9%87%8C%E6%A8%82%E7%BE%A4%E8%A1%9744%E8%99%9F"
+               target="_blank" rel="noopener noreferrer">
+              在 Google Maps 開啟 →
+            </a>
+          </article>
+
+          <article class="info-card">
+            <h3>電話</h3>
+            <!-- 店家資料未提供電話，請將下面的 XXX-XXXX 替換成實際電話。 -->
+            <p>電話：<a href="tel:04-XXX-XXXX">04-XXX-XXXX</a></p>
+            <p>手機開啟本頁後，可直接點擊電話撥號。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 聯絡與行動 -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <div class="section-kicker" style="color:#c9a47d;">Contact</div>
+            <h2>今天，來喝杯咖啡吧。</h2>
+            <p>把地址存起來，找個舒服的午後，來翻喫茶坐坐。</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary"
+               href="https://www.google.com/maps/search/?api=1&query=403%E8%87%BA%E4%B8%AD%E5%B8%82%E8%A5%BF%E5%8D%80%E5%BB%A3%E6%B0%91%E9%87%8C%E6%A8%82%E7%BE%A4%E8%A1%9744%E8%99%9F"
+               target="_blank" rel="noopener noreferrer">前往 Google Maps</a>
+            <a class="btn btn-ghost" href="tel:04-XXX-XXXX">直接撥電話</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>翻喫茶ほんきっさ · HONKISSA</div>
+      <div>一杯咖啡，讓日子慢下來。</div>
+    </div>
+  </footer>
+</body>
+</html>
